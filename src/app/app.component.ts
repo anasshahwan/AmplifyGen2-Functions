@@ -1,12 +1,21 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { generateClient } from 'aws-amplify/data';
+import { Schema } from '../../amplify/data/resource';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'amplifygen2-functions';
+  title = 'Amplifygen2-functions';
+
+  client = generateClient<Schema>();
+
+  async invokeLambdaFunction() {
+    const res = await this.client.queries.sayHello({ name: 'Nice Work!!' });
+    console.log(res);
+  }
 }
