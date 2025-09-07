@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { generateClient } from 'aws-amplify/data';
 import { Schema } from '../../amplify/data/resource';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, AmplifyAuthenticatorModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
