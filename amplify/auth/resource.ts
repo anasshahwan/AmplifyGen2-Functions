@@ -1,5 +1,6 @@
 import { defineAuth } from '@aws-amplify/backend';
 import { preSignUp } from '../functions/auth/pre-signup/resource';
+import { postConfirmation } from '../functions/auth/post-confirmation/resource';
 
 /**
  * Define and configure your auth resource
@@ -17,5 +18,8 @@ export const auth = defineAuth({
   },
   triggers: {
     preSignUp: preSignUp,
+    postConfirmation: postConfirmation,
   },
+  access: (allow) => [allow.resource(postConfirmation).to(['addUserToGroup'])],
+  groups: ['ADMINS', 'EVERYONE'],
 });
