@@ -10,4 +10,9 @@
     <button (click)="signOut()">Sign Out</button>
   </ng-template>
 </amplify-authenticator>
+
+<div class="upload-container">
+  <input type="file" id="fileInput" (change)="onFileSelected($event)" />
+  <button (click)="uploadFile()">Upload</button>
+</div>
 <router-outlet />
