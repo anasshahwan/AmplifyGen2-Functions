@@ -1,4 +1,4 @@
-import { defineFunction } from '@aws-amplify/backend';
+import { defineFunction, secret } from '@aws-amplify/backend';
 
 export const sayHello = defineFunction({
   name: 'sayHello',
@@ -8,4 +8,9 @@ export const sayHello = defineFunction({
   ephemeralStorageSizeMB: 512, //512 MB
   runtime: 22,
   resourceGroupName: 'data',
+  environment: {
+    TEST_ENV: 'test-value',
+    API_ENDPOINT: process.env['API_ENDPOINT'] || 'https://dev.example.com',
+    API_KEY: secret('API_KEY'),
+  },
 });
