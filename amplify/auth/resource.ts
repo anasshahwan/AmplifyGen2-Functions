@@ -9,6 +9,12 @@ export const auth = defineAuth({
   loginWith: {
     email: true,
   },
+  userAttributes: {
+    birthdate: {
+      required: true,
+      mutable: false,
+    },
+  },
   triggers: {
     preSignUp: preSignUp,
   },
